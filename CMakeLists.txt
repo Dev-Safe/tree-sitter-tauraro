@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-tauraro
         VERSION "0.1.0"
-        DESCRIPTION "Tree-sitter grammar for the tauraro programming language"
-        HOMEPAGE_URL "https://github.com/ken-morel/tree-sitter-tauraro"
+        DESCRIPTION "Tree-sitter parser for the Tauraro language"
+        HOMEPAGE_URL "https://github.com/dev-safe/tree-sitter-tauraro"
         LANGUAGES C)
 
 option(BUILD_SHARED_LIBS "Build using shared libraries" ON)

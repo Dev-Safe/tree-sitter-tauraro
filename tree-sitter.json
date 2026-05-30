@@ -7,9 +7,9 @@
       "title": "Tauraro",
       "scope": "source.tauraro",
       "file-types": [
-        "tau",
+        "tauraro",
         "tr",
-        "tauraro"
+        "tau"
       ],
       "injection-regex": "^tauraro$",
       "class-name": "TreeSitterTauraro"
@@ -18,12 +18,12 @@
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "Tree-sitter grammar for the tauraro programming language",
+    "description": "Tree-sitter parser for the Tauraro language",
     "authors": [
       {
         "name": "ken-morel",
         "email": "me@engon.cm",
-        "url": "https://github.com/ken-morel"
+        "url": "https://engon.cm"
       }
     ],
     "links": {

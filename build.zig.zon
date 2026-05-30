@@ -1,6 +1,6 @@
 .{
     .name = .tree_sitter_tauraro,
-    .fingerprint = 0x2888a7d6e33e9cb,
+    .fingerprint = 0x2888a7d6d39d42c6,
     .version = "0.1.0",
     .dependencies = .{
         .tree_sitter = .{

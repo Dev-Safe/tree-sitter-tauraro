@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-tauraro",
   "version": "0.1.0",
-  "description": "Tree-sitter grammar for the tauraro programming language",
+  "description": "Tree-sitter parser for the Tauraro language",
   "type": "module",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "author": {
     "name": "ken-morel",
     "email": "me@engon.cm",
-    "url": "https://github.com/ken-morel"
+    "url": "https://engon.cm"
   },
   "main": "bindings/node",
   "types": "bindings/node",

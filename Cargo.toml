@@ -1,13 +1,13 @@
 [package]
 name = "tree-sitter-tauraro"
-description = "Tree-sitter grammar for the tauraro programming language"
+description = "Tree-sitter parser for the Tauraro language"
 version = "0.1.0"
 authors = ["ken-morel <me@engon.cm>"]
 license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "tauraro"]
 categories = ["parser-implementations", "parsing", "text-editors"]
-repository = "https://github.com/ken-morel/tree-sitter-tauraro"
+repository = "https://github.com/dev-safe/tree-sitter-tauraro"
 edition = "2021"
 autoexamples = false
 

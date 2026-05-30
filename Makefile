@@ -1,5 +1,5 @@
 LANGUAGE_NAME := tree-sitter-tauraro
-HOMEPAGE_URL := https://github.com/ken-morel/tree-sitter-tauraro
+HOMEPAGE_URL := https://github.com/dev-safe/tree-sitter-tauraro
 VERSION := 0.1.0
 
 # repository
