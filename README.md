@@ -1,8 +1,9 @@
 # Tree-sitter for Tauraro
 
-A Tree-sitter grammar for the [Tauraro](https://github.com/tauraro-lang) programming language.
+A Tree-sitter grammar for the [Tauraro](https://github.com/tauraro/tauraro) programming language.
 
-This repository provides fast, robust parsing for Tauraro, enabling advanced features like precise syntax highlighting, code navigation, and structural editing in editors like Helix, Neovim, and Emacs.
+This repository provides parsing for Tauraro, and features like code navigation, and structural editing in editors like Helix, Neovim, and Emacs.
+With highlight, indent and text-object queries.
 
 ## Usage with Helix
 
@@ -23,7 +24,7 @@ indent = { tab-width = 4, unit = "    " }
 
 [[grammar]]
 name = "tauraro"
-source = { git = "https://github.com/ken-morel/tree-sitter-tauraro", rev = "main" }
+source = { git = "https://github.com/dev-safe/tree-sitter-tauraro", rev = "main" }
 ```
 
 ### 2. Add the Queries
@@ -35,40 +36,3 @@ For Helix to know _how_ to highlight and format the code, it needs the query fil
    mkdir -p ~/.config/helix/runtime/queries/tauraro
    ```
 2. Copy the `.scm` files from the `queries/` folder in this repository (`highlights.scm`, `indents.scm`, `locals.scm`, and `textobjects.scm`) into that new directory.
-
-### 3. Fetch and Build
-
-Finally, tell Helix to download and compile the grammar:
-
-```bash
-hx --grammar fetch
-hx --grammar build
-```
-
-You are all set! Open a `.tau` file in Helix to see your new syntax highlighting and text objects in action.
-
-## Developing Locally
-
-If you want to contribute to the grammar or test changes locally, you will need [Node.js](https://nodejs.org/) and a C compiler installed.
-
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/ken-morel/tree-sitter-tauraro.git](https://github.com/ken-morel/tree-sitter-tauraro.git)
-   cd tree-sitter-tauraro
-   ```
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Generate the parser (run this every time you modify `grammar.js`):
-   ```bash
-   npx tree-sitter generate
-   ```
-4. Run tests:
-   ```bash
-   npx tree-sitter test
-   ```
-
-## License
-
-MIT

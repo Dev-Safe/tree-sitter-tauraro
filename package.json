@@ -5,7 +5,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ken-morel/tree-sitter-tauraro.git"
+    "url": "git+https://github.com/dev-safe/tree-sitter-tauraro.git"
   },
   "funding": "",
   "license": "MIT",
