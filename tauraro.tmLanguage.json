@@ -1,0 +1,422 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Tauraro",
+  "scopeName": "source.tauraro",
+  "fileTypes": ["tr", "tau", "tauraro"],
+  "patterns": [
+    { "include": "#decorator" },
+    { "include": "#class-definition" },
+    { "include": "#function-definition" },
+    { "include": "#interface-definition" },
+    { "include": "#enum-definition" },
+    { "include": "#struct-definition" },
+    { "include": "#extend-definition" },
+    { "include": "#import-statement" },
+    { "include": "#keywords-hausa" },
+    { "include": "#keywords-exception" },
+    { "include": "#keywords-async" },
+    { "include": "#keywords-control" },
+    { "include": "#keywords-declaration" },
+    { "include": "#keywords-modifier" },
+    { "include": "#keywords-operator-word" },
+    { "include": "#builtin-exceptions" },
+    { "include": "#builtin-functions" },
+    { "include": "#builtin-types" },
+    { "include": "#constants" },
+    { "include": "#self-keyword" },
+    { "include": "#string" },
+    { "include": "#line-comment" },
+    { "include": "#number" },
+    { "include": "#type-generic" },
+    { "include": "#method-call" },
+    { "include": "#function-call" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+
+    "line-comment": {
+      "name": "comment.line.number-sign.tauraro",
+      "match": "#.*$"
+    },
+
+    "decorator": {
+      "name": "meta.decorator.tauraro",
+      "match": "(@)([A-Za-z_][\\w.]*)",
+      "captures": {
+        "1": { "name": "punctuation.definition.decorator.tauraro" },
+        "2": { "name": "entity.name.function.decorator.tauraro" }
+      }
+    },
+
+    "class-definition": {
+      "patterns": [
+        {
+          "name": "meta.class.tauraro",
+          "match": "\\b(class|aji)\\b\\s+([A-Za-z_][\\w]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.class.tauraro" },
+            "2": { "name": "entity.name.type.class.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "function-definition": {
+      "patterns": [
+        {
+          "name": "meta.function.tauraro",
+          "match": "\\b(def|aiki)\\b\\s+([A-Za-z_][\\w]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.function.tauraro" },
+            "2": { "name": "entity.name.function.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "interface-definition": {
+      "patterns": [
+        {
+          "name": "meta.interface.tauraro",
+          "match": "\\b(interface)\\b\\s+([A-Za-z_][\\w]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.interface.tauraro" },
+            "2": { "name": "entity.name.type.interface.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "enum-definition": {
+      "patterns": [
+        {
+          "name": "meta.enum.tauraro",
+          "match": "\\b(enum)\\b\\s+([A-Za-z_][\\w]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.enum.tauraro" },
+            "2": { "name": "entity.name.type.enum.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "struct-definition": {
+      "patterns": [
+        {
+          "name": "meta.struct.tauraro",
+          "match": "\\b(struct|tsari)\\b\\s+([A-Za-z_][\\w]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.struct.tauraro" },
+            "2": { "name": "entity.name.type.struct.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "extend-definition": {
+      "patterns": [
+        {
+          "name": "meta.extend.tauraro",
+          "match": "\\b(extend)\\b\\s+([A-Za-z_][\\w]*)",
+          "captures": {
+            "1": { "name": "keyword.declaration.extend.tauraro" },
+            "2": { "name": "entity.name.type.class.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "import-statement": {
+      "patterns": [
+        {
+          "name": "meta.import.from.tauraro",
+          "match": "\\b(from)\\s+([\\w.]+)\\s+(import)\\b",
+          "captures": {
+            "1": { "name": "keyword.control.import.tauraro" },
+            "2": { "name": "entity.name.namespace.tauraro" },
+            "3": { "name": "keyword.control.import.tauraro" }
+          }
+        },
+        {
+          "name": "meta.import.tauraro",
+          "match": "\\b(import)\\s+([\\w.]+)",
+          "captures": {
+            "1": { "name": "keyword.control.import.tauraro" },
+            "2": { "name": "entity.name.namespace.tauraro" }
+          }
+        }
+      ]
+    },
+
+    "keywords-hausa": {
+      "name": "keyword.other.hausa.tauraro",
+      "match": "\\b(aiki|aji|tsari|idan|koidan|sai|ga|yayinda|dawo|tsaya|ci_gaba|wuce|duba|hali|gwada|kama|karshe|jefa|marasa_jira|jira|bayar|dan_aiki)\\b"
+    },
+
+    "keywords-exception": {
+      "name": "keyword.control.exception.tauraro",
+      "match": "\\b(try|except|finally|raise|with|assert)\\b"
+    },
+
+    "keywords-async": {
+      "name": "keyword.control.async.tauraro",
+      "match": "\\b(async|await|spawn|yield)\\b"
+    },
+
+    "keywords-control": {
+      "name": "keyword.control.tauraro",
+      "match": "\\b(if|elif|else|for|while|return|break|continue|pass|match|case|in|is|as|del|global|nonlocal|unsafe|extern)\\b"
+    },
+
+    "keywords-declaration": {
+      "name": "keyword.declaration.tauraro",
+      "match": "\\b(def|class|struct|interface|enum|extend|lambda)\\b"
+    },
+
+    "keywords-modifier": {
+      "name": "storage.modifier.tauraro",
+      "match": "\\b(pub|mut|static|const|abstract|virtual|override|let)\\b"
+    },
+
+    "keywords-operator-word": {
+      "name": "keyword.operator.word.tauraro",
+      "match": "\\b(and|or|not|da|ko|ba)\\b"
+    },
+
+    "builtin-exceptions": {
+      "name": "support.type.exception.tauraro",
+      "match": "\\b(Exception|ValueError|TypeError|RuntimeError|IOError|OSError|NameError|KeyError|IndexError|AttributeError|ImportError|MemoryError|RecursionError|NotImplementedError|StopIteration|SystemExit|KeyboardInterrupt|ZeroDivisionError|OverflowError|FileNotFoundError|PermissionError|TimeoutError|ArithmeticError|LookupError)\\b"
+    },
+
+    "builtin-functions": {
+      "name": "support.function.builtin.tauraro",
+      "match": "\\b(print|buga|len|range|input|abs|min|max|sum|round|pow|enumerate|zip|map|filter|sorted|reversed|any|all|chr|ord|hex|bin|oct|isinstance|type|callable|hasattr|getattr|setattr|id|hash|repr|format|iter|next|open|super|vars|dir|eval|exec|assert)\\b"
+    },
+
+    "builtin-types": {
+      "name": "support.type.builtin.tauraro",
+      "match": "\\b(str|int|i8|i16|i32|i64|i128|u8|u16|u32|u64|u128|f32|f64|bool|char|void|List|Dict|Tuple|Set|Option|Result|Box|Vec|String|Bytes|Any|Never|Self|Map|Pointer)\\b"
+    },
+
+    "constants": {
+      "name": "constant.language.tauraro",
+      "match": "\\b(true|false|none|null|gaskiya|karya|babu)\\b"
+    },
+
+    "self-keyword": {
+      "name": "variable.language.this.tauraro",
+      "match": "\\b(self)\\b"
+    },
+
+    "string": {
+      "patterns": [
+        {
+          "name": "string.quoted.docstring.tauraro",
+          "begin": "\"\"\"",
+          "end": "\"\"\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [ { "include": "#escape-sequence" } ]
+        },
+        {
+          "name": "string.quoted.docstring.tauraro",
+          "begin": "'''",
+          "end": "'''",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [ { "include": "#escape-sequence" } ]
+        },
+        {
+          "name": "string.interpolated.fstring.double.tauraro",
+          "begin": "f\"",
+          "end": "\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [
+            { "include": "#fstring-interpolation" },
+            { "include": "#escape-sequence" }
+          ]
+        },
+        {
+          "name": "string.interpolated.fstring.single.tauraro",
+          "begin": "f'",
+          "end": "'",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [
+            { "include": "#fstring-interpolation" },
+            { "include": "#escape-sequence" }
+          ]
+        },
+        {
+          "name": "string.quoted.raw.double.tauraro",
+          "begin": "r\"",
+          "end": "\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } }
+        },
+        {
+          "name": "string.quoted.raw.single.tauraro",
+          "begin": "r'",
+          "end": "'",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } }
+        },
+        {
+          "name": "string.quoted.bytes.double.tauraro",
+          "begin": "b\"",
+          "end": "\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [ { "include": "#escape-sequence" } ]
+        },
+        {
+          "name": "string.quoted.bytes.single.tauraro",
+          "begin": "b'",
+          "end": "'",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [ { "include": "#escape-sequence" } ]
+        },
+        {
+          "name": "string.quoted.double.tauraro",
+          "begin": "\"",
+          "end": "\"",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [ { "include": "#escape-sequence" } ]
+        },
+        {
+          "name": "string.quoted.single.tauraro",
+          "begin": "'",
+          "end": "'",
+          "beginCaptures": { "0": { "name": "punctuation.definition.string.begin.tauraro" } },
+          "endCaptures": { "0": { "name": "punctuation.definition.string.end.tauraro" } },
+          "patterns": [ { "include": "#escape-sequence" } ]
+        }
+      ]
+    },
+
+    "fstring-interpolation": {
+      "name": "meta.embedded.expression.tauraro",
+      "begin": "\\{(?!\\{)",
+      "end": "\\}",
+      "beginCaptures": { "0": { "name": "punctuation.section.embedded.begin.tauraro" } },
+      "endCaptures": { "0": { "name": "punctuation.section.embedded.end.tauraro" } },
+      "patterns": [
+        { "include": "#builtin-functions" },
+        { "include": "#builtin-types" },
+        { "include": "#constants" },
+        { "include": "#self-keyword" },
+        { "include": "#number" },
+        { "include": "#operators" },
+        { "include": "#method-call" },
+        { "include": "#function-call" }
+      ]
+    },
+
+    "escape-sequence": {
+      "name": "constant.character.escape.tauraro",
+      "match": "\\\\(?:[\\\\\"'nrtbfav0]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\\{[^}]+\\})"
+    },
+
+    "number": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.tauraro",
+          "match": "\\b0[xX][0-9a-fA-F][0-9a-fA-F_]*\\b"
+        },
+        {
+          "name": "constant.numeric.binary.tauraro",
+          "match": "\\b0[bB][01][01_]*\\b"
+        },
+        {
+          "name": "constant.numeric.octal.tauraro",
+          "match": "\\b0[oO][0-7][0-7_]*\\b"
+        },
+        {
+          "name": "constant.numeric.float.tauraro",
+          "match": "\\b[0-9][0-9_]*\\.[0-9][0-9_]*(?:[eE][+-]?[0-9][0-9_]*)?(?:f32|f64)?\\b"
+        },
+        {
+          "name": "constant.numeric.float.scientific.tauraro",
+          "match": "\\b[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(?:f32|f64)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.tauraro",
+          "match": "\\b[0-9][0-9_]*(?:i8|i16|i32|i64|i128|u8|u16|u32|u64|u128)?\\b"
+        }
+      ]
+    },
+
+    "type-generic": {
+      "name": "meta.type.generic.tauraro",
+      "match": "\\b([A-Z][\\w]*)(?=\\s*\\[)",
+      "captures": {
+        "1": { "name": "entity.name.type.tauraro" }
+      }
+    },
+
+    "method-call": {
+      "name": "meta.method-call.tauraro",
+      "match": "\\.([A-Za-z_][\\w]*)(?=\\s*\\()",
+      "captures": {
+        "1": { "name": "entity.name.function.method.tauraro" }
+      }
+    },
+
+    "function-call": {
+      "name": "meta.function-call.tauraro",
+      "match": "\\b([a-z_][\\w]*)(?=\\s*\\()",
+      "captures": {
+        "1": { "name": "entity.name.function.call.tauraro" }
+      }
+    },
+
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.arrow.tauraro",
+          "match": "->"
+        },
+        {
+          "name": "keyword.operator.fat-arrow.tauraro",
+          "match": "=>"
+        },
+        {
+          "name": "keyword.operator.nullable.tauraro",
+          "match": "\\?\\?|!!|\\?"
+        },
+        {
+          "name": "keyword.operator.spread.tauraro",
+          "match": "\\.\\.\\.|\\.\\."
+        },
+        {
+          "name": "keyword.operator.comparison.tauraro",
+          "match": "==|!=|<=|>=|<(?![<])|>(?![>])"
+        },
+        {
+          "name": "keyword.operator.assignment.compound.tauraro",
+          "match": "\\+=|-=|\\*\\*=|\\*=|//=|/=|%=|&=|\\|=|\\^=|<<=|>>="
+        },
+        {
+          "name": "keyword.operator.assignment.tauraro",
+          "match": ":=|<-|~>|="
+        },
+        {
+          "name": "keyword.operator.arithmetic.tauraro",
+          "match": "\\*\\*|//|[+\\-*/%]"
+        },
+        {
+          "name": "keyword.operator.bitwise.tauraro",
+          "match": "<<|>>|[&|^~]"
+        },
+        {
+          "name": "keyword.operator.colon.tauraro",
+          "match": ":"
+        }
+      ]
+    }
+
+  }
+}
