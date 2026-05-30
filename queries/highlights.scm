@@ -1,41 +1,52 @@
-(keywords_hausa) @keyword
-(keywords_exception) @keyword.control
-(keywords_async) @keyword.control
-(keywords_control) @keyword.control
-(keywords_declaration) @keyword.storage
-(keywords_modifier) @keyword.storage
-(keywords_operator_word) @keyword.operator
+; Keywords
+(choice "class" "aji" "def" "aiki" "interface" "enum" "struct" "tsari" "extend" "lambda") @keyword.function
+(choice "if" "idan" "elif" "koidan" "else" "sai" "for" "ga" "while" "yayinda" "match" "duba" "case" "hali" "try" "gwada" "except" "kama" "finally" "karshe" "with" "return" "dawo" "break" "tsaya" "continue" "ci_gaba" "pass" "wuce" "raise" "jefa" "yield" "bayar" "in" "is" "as") @keyword.control
+(choice "import" "from") @keyword.control.import
+(choice "async" "marasa_jira" "await" "jira" "spawn" "dan_aiki") @keyword.control.async
+(choice "let" "const" "static" "mut" "pub" "abstract" "virtual" "override" "extern" "unsafe") @keyword.storage
 
-(builtin_exceptions) @type.builtin
+; Identifiers
+(identifier) @variable
+(parameter name: (identifier) @variable.parameter)
+(variable_declaration name: (identifier) @variable)
+(variable_declaration ["const" "static"] name: (identifier) @constant)
+
+(function_definition name: (identifier) @function)
+(class_definition name: (identifier) @type)
+(struct_definition name: (identifier) @type)
+(interface_definition name: (identifier) @type)
+(enum_definition name: (identifier) @type)
+(extend_definition name: (identifier) @type)
+
+(member_expression member: (identifier) @variable.other.member)
+(call_expression function: (identifier) @function.call)
+(call_expression function: (member_expression member: (identifier) @function.method))
+
+; Builtins
 (builtin_functions) @function.builtin
 (builtin_types) @type.builtin
-(constants) @constant.builtin
-(self_keyword) @variable.builtin
+(builtin_exceptions) @type.builtin
+(self) @variable.builtin
 
-(string) @string
-(escape_sequence) @constant.character.escape
+; Literals
 (number) @constant.numeric
-(line_comment) @comment
+(string) @string
+(boolean) @constant.builtin.boolean
+(none) @constant.builtin
+(escape_sequence) @constant.character.escape
 
-(operators) @operator
+; Punctuation and Operators
+(binary_expression operator: _ @operator)
+(unary_expression operator: _ @operator)
+(assignment_expression operator: _ @operator)
+(operators) @operator ; fallback
+
 (punctuation) @punctuation
 (colon) @punctuation.delimiter
+["(" ")" "[" "]" "{" "}"] @punctuation.bracket
+"," @punctuation.delimiter
+"." @punctuation.delimiter
+"->" @punctuation.delimiter
 
-(decorator "@" @punctuation.delimiter)
-(decorator (identifier) @attribute)
-
-(class_definition ["class" "aji"] @keyword.storage name: (identifier) @type)
-(function_definition ["def" "aiki"] @keyword.storage name: (identifier) @function)
-(interface_definition "interface" @keyword.storage name: (identifier) @type)
-(enum_definition "enum" @keyword.storage name: (identifier) @type)
-(struct_definition ["struct" "tsari"] @keyword.storage name: (identifier) @type)
-(extend_definition "extend" @keyword.storage name: (identifier) @type)
-
-(import_statement ["from" "import"] @keyword.control)
-(import_statement module: (identifier_dotted) @namespace)
-
-(type_generic type: (identifier) @type "[" @punctuation.bracket)
-(method_call "." @punctuation.delimiter method: (identifier) @function.method "(" @punctuation.bracket)
-(function_call function: (identifier) @function.call "(" @punctuation.bracket)
-
-(identifier) @variable
+; Comments
+(line_comment) @comment

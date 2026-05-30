@@ -1,17 +1,8 @@
-(function_definition
-  name: (identifier) @definition.function)
+(function_definition name: (identifier) @definition.function)
+(class_definition name: (identifier) @definition.class)
+(struct_definition name: (identifier) @definition.type)
+(interface_definition name: (identifier) @definition.interface)
+(enum_definition name: (identifier) @definition.type)
 
-(class_definition
-  name: (identifier) @definition.class)
-
-(interface_definition
-  name: (identifier) @definition.interface)
-
-(enum_definition
-  name: (identifier) @definition.type)
-
-(struct_definition
-  name: (identifier) @definition.type)
-
-(extend_definition
-  name: (identifier) @definition.class)
+(call_expression function: (identifier) @reference.call)
+(call_expression function: (member_expression member: (identifier) @reference.call))
