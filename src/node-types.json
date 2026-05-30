@@ -394,6 +394,11 @@
     }
   },
   {
+    "type": "constants",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "decorator",
     "named": true,
     "fields": {},
@@ -681,6 +686,11 @@
     }
   },
   {
+    "type": "keyword_modifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "lambda_expression",
     "named": true,
     "fields": {},
@@ -727,6 +737,25 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "namespace_identifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -793,14 +822,6 @@
       "multiple": false,
       "required": true,
       "types": [
-        {
-          "type": "builtin_exceptions",
-          "named": true
-        },
-        {
-          "type": "builtin_functions",
-          "named": true
-        },
         {
           "type": "call_expression",
           "named": true
@@ -1283,6 +1304,10 @@
     "named": false
   },
   {
+    "type": "abstract",
+    "named": false
+  },
+  {
     "type": "aiki",
     "named": false
   },
@@ -1303,12 +1328,8 @@
     "named": false
   },
   {
-    "type": "builtin_exceptions",
-    "named": true
-  },
-  {
-    "type": "builtin_functions",
-    "named": true
+    "type": "babu",
+    "named": false
   },
   {
     "type": "builtin_types",
@@ -1319,8 +1340,8 @@
     "named": false
   },
   {
-    "type": "constants",
-    "named": true
+    "type": "const",
+    "named": false
   },
   {
     "type": "da",
@@ -1347,7 +1368,15 @@
     "named": false
   },
   {
+    "type": "false",
+    "named": false
+  },
+  {
     "type": "from",
+    "named": false
+  },
+  {
+    "type": "gaskiya",
     "named": false
   },
   {
@@ -1371,8 +1400,8 @@
     "named": false
   },
   {
-    "type": "keyword_modifier",
-    "named": true
+    "type": "karya",
+    "named": false
   },
   {
     "type": "ko",
@@ -1383,16 +1412,28 @@
     "named": false
   },
   {
+    "type": "let",
+    "named": false
+  },
+  {
     "type": "line_comment",
     "named": true,
     "extra": true
   },
   {
-    "type": "namespace_identifier",
-    "named": true
+    "type": "mut",
+    "named": false
+  },
+  {
+    "type": "none",
+    "named": false
   },
   {
     "type": "not",
+    "named": false
+  },
+  {
+    "type": "null",
     "named": false
   },
   {
@@ -1404,6 +1445,14 @@
     "named": false
   },
   {
+    "type": "override",
+    "named": false
+  },
+  {
+    "type": "pub",
+    "named": false
+  },
+  {
     "type": "r",
     "named": false
   },
@@ -1412,7 +1461,15 @@
     "named": true
   },
   {
+    "type": "static",
+    "named": false
+  },
+  {
     "type": "struct",
+    "named": false
+  },
+  {
+    "type": "true",
     "named": false
   },
   {
@@ -1422,6 +1479,10 @@
   {
     "type": "type_identifier",
     "named": true
+  },
+  {
+    "type": "virtual",
+    "named": false
   },
   {
     "type": "{",

@@ -1,6 +1,7 @@
 {
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "tauraro",
+  "word": "identifier",
   "rules": {
     "source_file": {
       "type": "REPEAT",
@@ -553,33 +554,25 @@
                 {
                   "type": "SYMBOL",
                   "name": "identifier"
-                }
-              ]
-            },
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "REPEAT",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "keyword_modifier"
-                  }
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "identifier"
-                },
-                {
-                  "type": "SEQ",
+                  "type": "CHOICE",
                   "members": [
                     {
-                      "type": "STRING",
-                      "value": ":"
+                      "type": "SEQ",
+                      "members": [
+                        {
+                          "type": "STRING",
+                          "value": ":"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "type_annotation"
+                        }
+                      ]
                     },
                     {
-                      "type": "SYMBOL",
-                      "name": "type_annotation"
+                      "type": "BLANK"
                     }
                   ]
                 }
@@ -1031,14 +1024,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "builtin_exceptions"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "builtin_functions"
-        },
-        {
-          "type": "SYMBOL",
           "name": "constants"
         },
         {
@@ -1085,8 +1070,8 @@
       ]
     },
     "call_expression": {
-      "type": "PREC",
-      "value": 14,
+      "type": "PREC_LEFT",
+      "value": "call",
       "content": {
         "type": "SEQ",
         "members": [
@@ -1155,8 +1140,8 @@
       }
     },
     "member_expression": {
-      "type": "PREC",
-      "value": 15,
+      "type": "PREC_LEFT",
+      "value": "member",
       "content": {
         "type": "SEQ",
         "members": [
@@ -1188,7 +1173,7 @@
       "members": [
         {
           "type": "PREC_LEFT",
-          "value": 1,
+          "value": "or",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1230,7 +1215,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 2,
+          "value": "and",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1272,7 +1257,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 3,
+          "value": "comparative",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1338,7 +1323,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 4,
+          "value": "shift",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1392,7 +1377,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 5,
+          "value": "additive",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1434,7 +1419,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 6,
+          "value": "multiplicative",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1484,7 +1469,7 @@
         },
         {
           "type": "PREC_RIGHT",
-          "value": 7,
+          "value": "power",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1517,7 +1502,7 @@
         },
         {
           "type": "PREC_LEFT",
-          "value": 8,
+          "value": "coalesce",
           "content": {
             "type": "SEQ",
             "members": [
@@ -1561,7 +1546,7 @@
     },
     "unary_expression": {
       "type": "PREC",
-      "value": 9,
+      "value": "unary",
       "content": {
         "type": "SEQ",
         "members": [
@@ -1615,7 +1600,7 @@
     },
     "assignment_expression": {
       "type": "PREC_RIGHT",
-      "value": 0,
+      "value": "assign",
       "content": {
         "type": "SEQ",
         "members": [
@@ -1713,7 +1698,7 @@
     },
     "lambda_expression": {
       "type": "PREC",
-      "value": -1,
+      "value": "lambda",
       "content": {
         "type": "SEQ",
         "members": [
@@ -1750,531 +1735,214 @@
       "value": "#.*"
     },
     "keyword_modifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "pub"
-            },
-            {
-              "type": "STRING",
-              "value": "mut"
-            },
-            {
-              "type": "STRING",
-              "value": "static"
-            },
-            {
-              "type": "STRING",
-              "value": "const"
-            },
-            {
-              "type": "STRING",
-              "value": "abstract"
-            },
-            {
-              "type": "STRING",
-              "value": "virtual"
-            },
-            {
-              "type": "STRING",
-              "value": "override"
-            },
-            {
-              "type": "STRING",
-              "value": "let"
-            }
-          ]
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "pub"
+        },
+        {
+          "type": "STRING",
+          "value": "mut"
+        },
+        {
+          "type": "STRING",
+          "value": "static"
+        },
+        {
+          "type": "STRING",
+          "value": "const"
+        },
+        {
+          "type": "STRING",
+          "value": "abstract"
+        },
+        {
+          "type": "STRING",
+          "value": "virtual"
+        },
+        {
+          "type": "STRING",
+          "value": "override"
+        },
+        {
+          "type": "STRING",
+          "value": "let"
         }
-      }
-    },
-    "builtin_exceptions": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "Exception"
-            },
-            {
-              "type": "STRING",
-              "value": "ValueError"
-            },
-            {
-              "type": "STRING",
-              "value": "TypeError"
-            },
-            {
-              "type": "STRING",
-              "value": "RuntimeError"
-            },
-            {
-              "type": "STRING",
-              "value": "IOError"
-            },
-            {
-              "type": "STRING",
-              "value": "OSError"
-            },
-            {
-              "type": "STRING",
-              "value": "NameError"
-            },
-            {
-              "type": "STRING",
-              "value": "KeyError"
-            },
-            {
-              "type": "STRING",
-              "value": "IndexError"
-            },
-            {
-              "type": "STRING",
-              "value": "AttributeError"
-            },
-            {
-              "type": "STRING",
-              "value": "ImportError"
-            },
-            {
-              "type": "STRING",
-              "value": "MemoryError"
-            },
-            {
-              "type": "STRING",
-              "value": "RecursionError"
-            },
-            {
-              "type": "STRING",
-              "value": "NotImplementedError"
-            },
-            {
-              "type": "STRING",
-              "value": "StopIteration"
-            },
-            {
-              "type": "STRING",
-              "value": "SystemExit"
-            },
-            {
-              "type": "STRING",
-              "value": "KeyboardInterrupt"
-            },
-            {
-              "type": "STRING",
-              "value": "ZeroDivisionError"
-            },
-            {
-              "type": "STRING",
-              "value": "OverflowError"
-            },
-            {
-              "type": "STRING",
-              "value": "FileNotFoundError"
-            },
-            {
-              "type": "STRING",
-              "value": "PermissionError"
-            },
-            {
-              "type": "STRING",
-              "value": "TimeoutError"
-            },
-            {
-              "type": "STRING",
-              "value": "ArithmeticError"
-            },
-            {
-              "type": "STRING",
-              "value": "LookupError"
-            }
-          ]
-        }
-      }
-    },
-    "builtin_functions": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "print"
-            },
-            {
-              "type": "STRING",
-              "value": "buga"
-            },
-            {
-              "type": "STRING",
-              "value": "len"
-            },
-            {
-              "type": "STRING",
-              "value": "range"
-            },
-            {
-              "type": "STRING",
-              "value": "input"
-            },
-            {
-              "type": "STRING",
-              "value": "abs"
-            },
-            {
-              "type": "STRING",
-              "value": "min"
-            },
-            {
-              "type": "STRING",
-              "value": "max"
-            },
-            {
-              "type": "STRING",
-              "value": "sum"
-            },
-            {
-              "type": "STRING",
-              "value": "round"
-            },
-            {
-              "type": "STRING",
-              "value": "pow"
-            },
-            {
-              "type": "STRING",
-              "value": "enumerate"
-            },
-            {
-              "type": "STRING",
-              "value": "zip"
-            },
-            {
-              "type": "STRING",
-              "value": "map"
-            },
-            {
-              "type": "STRING",
-              "value": "filter"
-            },
-            {
-              "type": "STRING",
-              "value": "sorted"
-            },
-            {
-              "type": "STRING",
-              "value": "reversed"
-            },
-            {
-              "type": "STRING",
-              "value": "any"
-            },
-            {
-              "type": "STRING",
-              "value": "all"
-            },
-            {
-              "type": "STRING",
-              "value": "chr"
-            },
-            {
-              "type": "STRING",
-              "value": "ord"
-            },
-            {
-              "type": "STRING",
-              "value": "hex"
-            },
-            {
-              "type": "STRING",
-              "value": "bin"
-            },
-            {
-              "type": "STRING",
-              "value": "oct"
-            },
-            {
-              "type": "STRING",
-              "value": "isinstance"
-            },
-            {
-              "type": "STRING",
-              "value": "type"
-            },
-            {
-              "type": "STRING",
-              "value": "callable"
-            },
-            {
-              "type": "STRING",
-              "value": "hasattr"
-            },
-            {
-              "type": "STRING",
-              "value": "getattr"
-            },
-            {
-              "type": "STRING",
-              "value": "setattr"
-            },
-            {
-              "type": "STRING",
-              "value": "id"
-            },
-            {
-              "type": "STRING",
-              "value": "hash"
-            },
-            {
-              "type": "STRING",
-              "value": "repr"
-            },
-            {
-              "type": "STRING",
-              "value": "format"
-            },
-            {
-              "type": "STRING",
-              "value": "iter"
-            },
-            {
-              "type": "STRING",
-              "value": "next"
-            },
-            {
-              "type": "STRING",
-              "value": "open"
-            },
-            {
-              "type": "STRING",
-              "value": "super"
-            },
-            {
-              "type": "STRING",
-              "value": "vars"
-            },
-            {
-              "type": "STRING",
-              "value": "dir"
-            },
-            {
-              "type": "STRING",
-              "value": "eval"
-            },
-            {
-              "type": "STRING",
-              "value": "exec"
-            },
-            {
-              "type": "STRING",
-              "value": "assert"
-            }
-          ]
-        }
-      }
+      ]
     },
     "builtin_types": {
       "type": "TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "str"
-            },
-            {
-              "type": "STRING",
-              "value": "int"
-            },
-            {
-              "type": "STRING",
-              "value": "i8"
-            },
-            {
-              "type": "STRING",
-              "value": "i16"
-            },
-            {
-              "type": "STRING",
-              "value": "i32"
-            },
-            {
-              "type": "STRING",
-              "value": "i64"
-            },
-            {
-              "type": "STRING",
-              "value": "i128"
-            },
-            {
-              "type": "STRING",
-              "value": "u8"
-            },
-            {
-              "type": "STRING",
-              "value": "u16"
-            },
-            {
-              "type": "STRING",
-              "value": "u32"
-            },
-            {
-              "type": "STRING",
-              "value": "u64"
-            },
-            {
-              "type": "STRING",
-              "value": "u128"
-            },
-            {
-              "type": "STRING",
-              "value": "f32"
-            },
-            {
-              "type": "STRING",
-              "value": "f64"
-            },
-            {
-              "type": "STRING",
-              "value": "bool"
-            },
-            {
-              "type": "STRING",
-              "value": "char"
-            },
-            {
-              "type": "STRING",
-              "value": "void"
-            },
-            {
-              "type": "STRING",
-              "value": "List"
-            },
-            {
-              "type": "STRING",
-              "value": "Dict"
-            },
-            {
-              "type": "STRING",
-              "value": "Tuple"
-            },
-            {
-              "type": "STRING",
-              "value": "Set"
-            },
-            {
-              "type": "STRING",
-              "value": "Option"
-            },
-            {
-              "type": "STRING",
-              "value": "Result"
-            },
-            {
-              "type": "STRING",
-              "value": "Box"
-            },
-            {
-              "type": "STRING",
-              "value": "Vec"
-            },
-            {
-              "type": "STRING",
-              "value": "String"
-            },
-            {
-              "type": "STRING",
-              "value": "Bytes"
-            },
-            {
-              "type": "STRING",
-              "value": "Any"
-            },
-            {
-              "type": "STRING",
-              "value": "Never"
-            },
-            {
-              "type": "STRING",
-              "value": "Self"
-            },
-            {
-              "type": "STRING",
-              "value": "Map"
-            },
-            {
-              "type": "STRING",
-              "value": "Pointer"
-            }
-          ]
-        }
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "str"
+          },
+          {
+            "type": "STRING",
+            "value": "int"
+          },
+          {
+            "type": "STRING",
+            "value": "i8"
+          },
+          {
+            "type": "STRING",
+            "value": "i16"
+          },
+          {
+            "type": "STRING",
+            "value": "i32"
+          },
+          {
+            "type": "STRING",
+            "value": "i64"
+          },
+          {
+            "type": "STRING",
+            "value": "i128"
+          },
+          {
+            "type": "STRING",
+            "value": "u8"
+          },
+          {
+            "type": "STRING",
+            "value": "u16"
+          },
+          {
+            "type": "STRING",
+            "value": "u32"
+          },
+          {
+            "type": "STRING",
+            "value": "u64"
+          },
+          {
+            "type": "STRING",
+            "value": "u128"
+          },
+          {
+            "type": "STRING",
+            "value": "f32"
+          },
+          {
+            "type": "STRING",
+            "value": "f64"
+          },
+          {
+            "type": "STRING",
+            "value": "bool"
+          },
+          {
+            "type": "STRING",
+            "value": "char"
+          },
+          {
+            "type": "STRING",
+            "value": "void"
+          },
+          {
+            "type": "STRING",
+            "value": "List"
+          },
+          {
+            "type": "STRING",
+            "value": "Dict"
+          },
+          {
+            "type": "STRING",
+            "value": "Tuple"
+          },
+          {
+            "type": "STRING",
+            "value": "Set"
+          },
+          {
+            "type": "STRING",
+            "value": "Option"
+          },
+          {
+            "type": "STRING",
+            "value": "Result"
+          },
+          {
+            "type": "STRING",
+            "value": "Box"
+          },
+          {
+            "type": "STRING",
+            "value": "Vec"
+          },
+          {
+            "type": "STRING",
+            "value": "String"
+          },
+          {
+            "type": "STRING",
+            "value": "Bytes"
+          },
+          {
+            "type": "STRING",
+            "value": "Any"
+          },
+          {
+            "type": "STRING",
+            "value": "Never"
+          },
+          {
+            "type": "STRING",
+            "value": "Self"
+          },
+          {
+            "type": "STRING",
+            "value": "Map"
+          },
+          {
+            "type": "STRING",
+            "value": "Pointer"
+          }
+        ]
       }
     },
     "constants": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "true"
-            },
-            {
-              "type": "STRING",
-              "value": "false"
-            },
-            {
-              "type": "STRING",
-              "value": "none"
-            },
-            {
-              "type": "STRING",
-              "value": "null"
-            },
-            {
-              "type": "STRING",
-              "value": "gaskiya"
-            },
-            {
-              "type": "STRING",
-              "value": "karya"
-            },
-            {
-              "type": "STRING",
-              "value": "babu"
-            }
-          ]
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "true"
+        },
+        {
+          "type": "STRING",
+          "value": "false"
+        },
+        {
+          "type": "STRING",
+          "value": "none"
+        },
+        {
+          "type": "STRING",
+          "value": "null"
+        },
+        {
+          "type": "STRING",
+          "value": "gaskiya"
+        },
+        {
+          "type": "STRING",
+          "value": "karya"
+        },
+        {
+          "type": "STRING",
+          "value": "babu"
         }
-      }
+      ]
     },
     "self_keyword": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "STRING",
-          "value": "self"
-        }
-      }
+      "type": "STRING",
+      "value": "self"
     },
     "string": {
       "type": "CHOICE",
@@ -2466,82 +2134,92 @@
     "escape_sequence": {
       "type": "TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "PATTERN",
-          "value": "\\\\([\\\\\"'nrtbfav0]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\\{[^}]+\\})"
-        }
+        "type": "PATTERN",
+        "value": "\\\\([\\\\\"'nrtbfav0]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8}|N\\{[^}]+\\})"
       }
     },
     "number": {
       "type": "TOKEN",
       "content": {
-        "type": "PREC",
-        "value": 10,
-        "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "0[xX][0-9a-fA-F][0-9a-fA-F_]*"
-            },
-            {
-              "type": "PATTERN",
-              "value": "0[bB][01][01_]*"
-            },
-            {
-              "type": "PATTERN",
-              "value": "0[oO][0-7][0-7_]*"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[0-9][0-9_]*\\.[0-9][0-9_]*([eE][+-]?[0-9][0-9_]*)?(f32|f64)?"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(f32|f64)?"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[0-9][0-9_]*(i8|i16|i32|i64|i128|u8|u16|u32|u64|u128)?"
-            }
-          ]
-        }
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "PATTERN",
+            "value": "0[xX][0-9a-fA-F][0-9a-fA-F_]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "0[bB][01][01_]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "0[oO][0-7][0-7_]*"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[0-9][0-9_]*\\.[0-9][0-9_]*([eE][+-]?[0-9][0-9_]*)?(f32|f64)?"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(f32|f64)?"
+          },
+          {
+            "type": "PATTERN",
+            "value": "[0-9][0-9_]*(i8|i16|i32|i64|i128|u8|u16|u32|u64|u128)?"
+          }
+        ]
       }
     },
     "namespace_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 2,
-        "content": {
-          "type": "PATTERN",
-          "value": "[a-zA-Z_][a-zA-Z0-9_.]*"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "type_identifier"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "."
+              },
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "type_identifier"
+                  }
+                ]
+              }
+            ]
+          }
         }
-      }
+      ]
     },
     "identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[a-z_][a-zA-Z0-9_]*"
-        }
-      }
+      "type": "PATTERN",
+      "value": "[a-z_][a-zA-Z0-9_]*"
     },
     "type_identifier": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PREC",
-        "value": 1,
-        "content": {
-          "type": "PATTERN",
-          "value": "[A-Z][a-zA-Z0-9_]*"
-        }
-      }
+      "type": "PATTERN",
+      "value": "[A-Z][a-zA-Z0-9_]*"
     }
   },
   "extras": [
@@ -2554,8 +2232,84 @@
       "name": "line_comment"
     }
   ],
-  "conflicts": [],
-  "precedences": [],
+  "conflicts": [
+    [
+      "expression_statement",
+      "call_expression"
+    ],
+    [
+      "expression_statement",
+      "binary_expression"
+    ],
+    [
+      "variable_declaration",
+      "call_expression"
+    ],
+    [
+      "variable_declaration",
+      "binary_expression"
+    ],
+    [
+      "variable_declaration",
+      "expression_statement"
+    ]
+  ],
+  "precedences": [
+    [
+      {
+        "type": "STRING",
+        "value": "lambda"
+      },
+      {
+        "type": "STRING",
+        "value": "assign"
+      },
+      {
+        "type": "STRING",
+        "value": "or"
+      },
+      {
+        "type": "STRING",
+        "value": "and"
+      },
+      {
+        "type": "STRING",
+        "value": "comparative"
+      },
+      {
+        "type": "STRING",
+        "value": "shift"
+      },
+      {
+        "type": "STRING",
+        "value": "additive"
+      },
+      {
+        "type": "STRING",
+        "value": "multiplicative"
+      },
+      {
+        "type": "STRING",
+        "value": "power"
+      },
+      {
+        "type": "STRING",
+        "value": "coalesce"
+      },
+      {
+        "type": "STRING",
+        "value": "unary"
+      },
+      {
+        "type": "STRING",
+        "value": "call"
+      },
+      {
+        "type": "STRING",
+        "value": "member"
+      }
+    ]
+  ],
   "externals": [],
   "inline": [],
   "supertypes": [],

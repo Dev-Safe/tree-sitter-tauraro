@@ -13,22 +13,31 @@ export default grammar({
   // Tells tree-sitter how to distinguish keywords from longer identifiers starting with those keywords
   word: $ => $.identifier,
 
-  // Explicit, named precedence levels in descending order (highest to lowest)
+  // Tell the GLR parser how to handle ambiguous optional semicolons
+  conflicts: $ => [
+    [$.expression_statement, $.call_expression],
+    [$.expression_statement, $.binary_expression],
+    [$.variable_declaration, $.call_expression],
+    [$.variable_declaration, $.binary_expression],
+    [$.variable_declaration, $.expression_statement]
+  ],
+
+  // Explicit, named precedence levels in ascending order (lowest to highest)
   precedences: $ => [
     [
-      'member',
-      'call',
-      'unary',
-      'coalesce',
-      'power',
-      'multiplicative',
-      'additive',
-      'shift',
-      'comparative',
-      'and',
-      'or',
+      'lambda',
       'assign',
-      'lambda'
+      'or',
+      'and',
+      'comparative',
+      'shift',
+      'additive',
+      'multiplicative',
+      'power',
+      'coalesce',
+      'unary',
+      'call',
+      'member'
     ]
   ],
 
@@ -136,12 +145,12 @@ export default grammar({
           repeat1($.keyword_modifier),
           $.identifier,
           optional(seq(':', $.type_annotation))
-        ),
-        // Case 2: No modifiers. Type annotation is required to distinguish from expression statements like 'x = 5;'
-        seq(
-          $.identifier,
-          seq(':', $.type_annotation)
         )
+        // Case 2: No modifiers. Type annotation is required to distinguish from expression statements like 'x = 5;'
+        // seq(
+        //   $.identifier,
+        //   seq(':', $.type_annotation)
+        // )
       ),
       optional(seq('=', $.expression)),
       optional(';')
@@ -336,7 +345,7 @@ export default grammar({
       /[0-9][0-9_]*\.[0-9][0-9_]*([eE][+-]?[0-9][0-9_]*)?(f32|f64)?/,
       /[0-9][0-9_]*[eE][+-]?[0-9][0-9_]*(f32|f64)?/,
       /[0-9][0-9_]*(i8|i16|i32|i64|i128|u8|u16|u32|u64|u128)?/
-    ))),
+    )),
 
     // Dotted structure parsed as discrete rules rather than a single string token to avoid colliding with the dot operator
     namespace_identifier: $ => seq(

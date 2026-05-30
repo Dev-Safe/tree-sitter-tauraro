@@ -18,7 +18,7 @@ Open your Helix configuration file (usually located at `~/.config/helix/language
 name = "tauraro"
 scope = "source.tauraro"
 injection-regex = "tauraro"
-file-types = ["tau"]
+file-types = ["tr", "tau", "tauraro"]
 comment-token = "#"
 indent = { tab-width = 4, unit = "    " }
 
