@@ -366,6 +366,10 @@
           "named": true
         },
         {
+          "type": "colon",
+          "named": true
+        },
+        {
           "type": "constants",
           "named": true
         },
@@ -641,10 +645,6 @@
   },
   {
     "type": "/=",
-    "named": false
-  },
-  {
-    "type": ":",
     "named": false
   },
   {
@@ -990,6 +990,10 @@
   {
     "type": "class",
     "named": false
+  },
+  {
+    "type": "colon",
+    "named": true
   },
   {
     "type": "const",

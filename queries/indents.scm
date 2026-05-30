@@ -10,5 +10,5 @@
   "}"
 ] @indent.end
 
-; Simplified Python-like indentation trigger
-":" @indent.begin
+; Python-like indentation trigger
+(colon) @indent.begin

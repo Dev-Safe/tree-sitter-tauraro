@@ -56,6 +56,10 @@
         {
           "type": "SYMBOL",
           "name": "punctuation"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "colon"
         }
       ]
     },
@@ -1693,10 +1697,6 @@
         {
           "type": "STRING",
           "value": "~"
-        },
-        {
-          "type": "STRING",
-          "value": ":"
         }
       ]
     },
@@ -1736,6 +1736,10 @@
           "value": ";"
         }
       ]
+    },
+    "colon": {
+      "type": "STRING",
+      "value": ":"
     },
     "identifier": {
       "type": "PATTERN",

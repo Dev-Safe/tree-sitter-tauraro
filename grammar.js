@@ -48,7 +48,8 @@ export default grammar({
       $.import_statement,
       $._expression,
       $._statement_keywords,
-      $.punctuation
+      $.punctuation,
+      $.colon
     ),
 
     decorator: $ => seq(
@@ -253,13 +254,14 @@ export default grammar({
       '+=', '-=', '**=', '*=', '//=', '/=', '%=', '&=', '|=', '^=', '<<=', '>>=',
       ':=', '<-', '~>', '=',
       '**', '//', '+', '-', '*', '/', '%',
-      '<<', '>>', '&', '|', '^', '~',
-      ':'
+      '<<', '>>', '&', '|', '^', '~'
     ),
 
     punctuation: $ => choice(
       '(', ')', '[', ']', '{', '}', ',', ';'
     ),
+
+    colon: $ => ':',
 
     identifier: $ => /[A-Za-z_][\w]*/,
 

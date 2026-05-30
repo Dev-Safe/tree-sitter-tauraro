@@ -14,11 +14,12 @@
 
 (string) @string
 (escape_sequence) @constant.character.escape
-(number) @number
+(number) @constant.numeric
 (line_comment) @comment
 
 (operators) @operator
 (punctuation) @punctuation
+(colon) @punctuation.delimiter
 
 (decorator "@" @punctuation.delimiter)
 (decorator (identifier) @attribute)
