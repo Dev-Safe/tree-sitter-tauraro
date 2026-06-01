@@ -21,8 +21,9 @@ const PREC = {
   MULTIPLY: 11,
   POWER: 12,
   UNARY: 13,
-  CALL: 14,
-  MEMBER: 15,
+  CAST: 14,
+  CALL: 15,
+  MEMBER: 16,
 };
 
 export default grammar({
@@ -30,13 +31,14 @@ export default grammar({
 
   extras: $ => [
     $.line_comment,
-    /[\s\f\uFEFF\u2060\u200B]|\\\r?\n/
+    /[\s\f\uFEFF\u2060\u200B]|\\\r?\n/,
+    ';'
   ],
 
   conflicts: $ => [
-    [$._expression, $.primary_expression],
+    [$._expression, $._primary_expression],
     [$._statement, $._expression],
-    [$.variable_declaration, $.primary_expression],
+    [$.variable_declaration, $._primary_expression],
     [$.return_statement],
     [$.yield_statement],
     [$.raise_statement],
@@ -46,15 +48,27 @@ export default grammar({
     [$.match_statement],
     [$.try_statement],
     [$.with_statement],
+    [$.unsafe_statement],
+    [$.unsafe_statement, $.modifier],
+    [$.extern_statement, $.modifier],
     [$.class_definition],
     [$.function_definition],
+    [$.function_definition, $.colon],
     [$.struct_definition],
     [$.interface_definition],
     [$.enum_definition],
+    [$.enum_variant],
+    [$.enum_block],
     [$.extend_definition],
     [$.block],
     [$.parameter],
     [$.modifier],
+    [$._type, $.generic_type],
+    [$._expression, $.as_expression],
+    [$._primary_expression, $.generic_type],
+    [$.identifier, $.builtin_types],
+    [$.identifier, $.builtin_functions],
+    [$.identifier, $.builtin_exceptions],
   ],
 
   word: $ => $.identifier,
@@ -63,6 +77,7 @@ export default grammar({
     source_file: $ => repeat($._statement),
 
     _statement: $ => choice(
+      $.decorator,
       $.class_definition,
       $.function_definition,
       $.interface_definition,
@@ -75,8 +90,11 @@ export default grammar({
       $.for_statement,
       $.while_statement,
       $.match_statement,
+      $.case_clause,
       $.try_statement,
       $.with_statement,
+      $.unsafe_statement,
+      $.extern_statement,
       $.return_statement,
       $.break_statement,
       $.continue_statement,
@@ -86,12 +104,18 @@ export default grammar({
       $.expression_statement
     ),
 
+    decorator: $ => seq(
+      '@',
+      alias(/[A-Za-z_][\w.]*/, $.identifier)
+    ),
+
     // Definitions
     class_definition: $ => seq(
       repeat($.modifier),
       choice('class', 'aji'),
-      field('name', $.identifier),
-      field('body', $.block)
+      field('name', $.identifier) ,
+      optional(field('type_parameters', $.type_parameters)),
+      optional(field('body', $.block))
     ),
 
     function_definition: $ => seq(
@@ -99,43 +123,67 @@ export default grammar({
       optional(choice('async', 'marasa_jira')),
       choice('def', 'aiki'),
       field('name', $.identifier),
+      optional(field('type_parameters', $.type_parameters)),
       field('parameters', $.parameters),
-      optional(seq('->', field('return_type', $._type))),
-      field('body', $.block)
+      optional(seq(choice('->', ':'), field('return_type', $._type))),
+      optional(field('body', $.block))
     ),
 
     interface_definition: $ => seq(
       'interface',
       field('name', $.identifier),
-      field('body', $.block)
+      optional(field('type_parameters', $.type_parameters)),
+      optional(field('body', $.block))
     ),
 
     enum_definition: $ => seq(
+      repeat($.modifier),
       'enum',
       field('name', $.identifier),
-      field('body', $.block)
+      optional(field('type_parameters', $.type_parameters)),
+      optional(field('body', $.enum_block))
+    ),
+
+    enum_block: $ => seq(
+      $.colon,
+      choice(
+        $.enum_variant,
+        seq(repeat1($.enum_variant))
+      )
+    ),
+
+    enum_variant: $ => seq(
+      field('name', $.identifier),
+      optional(field('parameters', $.parameters))
     ),
 
     struct_definition: $ => seq(
       repeat($.modifier),
       choice('struct', 'tsari'),
       field('name', $.identifier),
-      field('body', $.block)
+      optional(field('type_parameters', $.type_parameters)),
+      optional(field('body', $.block))
     ),
 
     extend_definition: $ => seq(
       'extend',
       field('name', $.identifier),
-      field('body', $.block)
+      optional(field('type_parameters', $.type_parameters)),
+      optional(field('body', $.block))
     ),
 
     // Imports
     import_statement: $ => choice(
-      seq('from', field('module', $.identifier_dotted), 'import', choice($.identifier, $.import_list)),
-      seq('import', field('module', $.identifier_dotted))
+      seq('from', field('module', $.identifier_dotted), 'import', choice(sep1($.import_name, ','), $.import_list)),
+      seq('import', sep1($.import_name, ','))
     ),
 
-    import_list: $ => seq('(', sep1($.identifier, ','), ')'),
+    import_name: $ => seq(
+      field('name', $.identifier_dotted),
+      optional(seq('as', field('alias', $.identifier)))
+    ),
+
+    import_list: $ => seq('(', sep1($.import_name, ','), ')'),
 
     // Control Flow
     if_statement: $ => seq(
@@ -174,7 +222,7 @@ export default grammar({
     match_statement: $ => seq(
       choice('match', 'duba'),
       field('value', $._expression),
-      field('body', $.block)
+      optional(field('body', $.block))
     ),
 
     case_clause: $ => seq(
@@ -207,12 +255,23 @@ export default grammar({
       field('body', $.block)
     ),
 
+    unsafe_statement: $ => seq(
+      'unsafe',
+      optional(field('body', $.block))
+    ),
+
+    extern_statement: $ => seq(
+      'extern',
+      $.string,
+      optional(field('body', $.block))
+    ),
+
     // Other statements
     variable_declaration: $ => seq(
-      repeat($.modifier),
-      field('name', $.identifier),
-      optional(seq(':', field('type', $._type))),
-      optional(seq('=', field('value', $._expression)))
+      choice(
+        seq(repeat1($.modifier), field('name', $.identifier), optional(seq(':', field('type', $._type))), optional(seq('=', field('value', $._expression)))),
+        seq(repeat($.modifier), field('name', $.identifier), choice(seq(':', field('type', $._type), optional(seq('=', field('value', $._expression)))), seq('=', field('value', $._expression))))
+      )
     ),
 
     return_statement: $ => seq(
@@ -238,7 +297,7 @@ export default grammar({
 
     // Block
     block: $ => seq(
-      ':',
+      $.colon,
       choice(
         $._statement,
         seq(
@@ -249,9 +308,10 @@ export default grammar({
 
     // Expressions
     _expression: $ => choice(
-      $.primary_expression,
+      $._primary_expression,
       $.binary_expression,
       $.unary_expression,
+      $.as_expression,
       $.assignment_expression,
       $.lambda_expression,
       $.call_expression,
@@ -261,7 +321,7 @@ export default grammar({
       $.spawn_expression
     ),
 
-    primary_expression: $ => choice(
+    _primary_expression: $ => choice(
       $.identifier,
       $.number,
       $.string,
@@ -271,6 +331,7 @@ export default grammar({
       $.builtin_functions,
       $.builtin_types,
       $.builtin_exceptions,
+      $.generic_type,
       seq('(', $._expression, ')')
     ),
 
@@ -278,6 +339,12 @@ export default grammar({
       field('left', $._expression),
       field('operator', choice('=', ':=', '+=', '-=', '*=', '/=', '//=', '%=', '&=', '|=', '^=', '<<=', '>>=', '**=')),
       field('right', $._expression)
+    )),
+
+    as_expression: $ => prec.left(PREC.CAST, seq(
+      field('left', $._expression),
+      'as',
+      field('right', $._type)
     )),
 
     binary_expression: $ => {
@@ -319,7 +386,7 @@ export default grammar({
     lambda_expression: $ => seq(
       'lambda',
       field('parameters', $.parameters),
-      ':',
+      $.colon,
       field('body', $._expression)
     ),
 
@@ -361,14 +428,20 @@ export default grammar({
       ')'
     ),
 
+    type_parameters: $ => seq(
+      '[',
+      sep1($.identifier, ','),
+      ']'
+    ),
+
     _type: $ => choice(
+      $.generic_type,
       $.identifier,
-      $.builtin_types,
-      $.generic_type
+      $.builtin_types
     ),
 
     generic_type: $ => seq(
-      field('name', $.identifier),
+      field('name', choice($.identifier, $.builtin_types)),
       '[',
       sep1($._type, ','),
       ']'
@@ -445,7 +518,7 @@ export default grammar({
       'reversed', 'any', 'all', 'chr', 'ord', 'hex', 'bin', 'oct',
       'isinstance', 'type', 'callable', 'hasattr', 'getattr', 'setattr',
       'id', 'hash', 'repr', 'format', 'iter', 'next', 'open', 'super',
-      'vars', 'dir', 'eval', 'exec', 'assert'
+      'vars', 'dir', 'eval', 'exec', 'assert', 'sizeof'
     ),
 
     builtin_types: $ => choice(
@@ -463,6 +536,8 @@ export default grammar({
       'OverflowError', 'FileNotFoundError', 'PermissionError', 'TimeoutError',
       'ArithmeticError', 'LookupError'
     ),
+
+    colon: $ => ':',
 
     line_comment: $ => /#.*/
   }

@@ -1,15 +1,65 @@
-; Keywords
-(choice "class" "aji" "def" "aiki" "interface" "enum" "struct" "tsari" "extend" "lambda") @keyword.function
-(choice "if" "idan" "elif" "koidan" "else" "sai" "for" "ga" "while" "yayinda" "match" "duba" "case" "hali" "try" "gwada" "except" "kama" "finally" "karshe" "with" "return" "dawo" "break" "tsaya" "continue" "ci_gaba" "pass" "wuce" "raise" "jefa" "yield" "bayar" "in" "is" "as") @keyword.control
-(choice "import" "from") @keyword.control.import
-(choice "async" "marasa_jira" "await" "jira" "spawn" "dan_aiki") @keyword.control.async
-(choice "let" "const" "static" "mut" "pub" "abstract" "virtual" "override" "extern" "unsafe") @keyword.storage
+; --- Definitions ---
+(decorator "@" @punctuation.delimiter)
+(decorator (identifier) @attribute)
 
-; Identifiers
+(class_definition ["class" "aji"] @keyword.function)
+(function_definition ["def" "aiki"] @keyword.function)
+(function_definition ["async" "marasa_jira"] @keyword.control.async)
+(interface_definition "interface" @keyword.function)
+(enum_definition "enum" @keyword.function)
+(struct_definition ["struct" "tsari"] @keyword.function)
+(extend_definition "extend" @keyword.function)
+
+(lambda_expression "lambda" @keyword.function)
+
+; --- Control Flow ---
+(if_statement ["if" "idan"] @keyword.control)
+(elif_clause ["elif" "koidan"] @keyword.control)
+(else_clause ["else" "sai"] @keyword.control)
+
+(for_statement ["for" "ga"] @keyword.control)
+(for_statement "in" @keyword.control)
+
+(while_statement ["while" "yayinda"] @keyword.control)
+
+(match_statement ["match" "duba"] @keyword.control)
+(case_clause ["case" "hali"] @keyword.control)
+
+(try_statement ["try" "gwada"] @keyword.control)
+(except_clause ["except" "kama"] @keyword.control)
+(finally_clause ["finally" "karshe"] @keyword.control)
+
+(with_statement "with" @keyword.control)
+
+(unsafe_statement "unsafe" @keyword.control)
+(extern_statement "extern" @keyword.control)
+
+(import_statement ["import" "from"] @keyword.control.import)
+(import_name "as" @keyword.control.import)
+
+(return_statement ["return" "dawo"] @keyword.control)
+(break_statement ["break" "tsaya"] @keyword.control)
+(continue_statement ["continue" "ci_gaba"] @keyword.control)
+(pass_statement ["pass" "wuce"] @keyword.control)
+(raise_statement ["raise" "jefa"] @keyword.control)
+(yield_statement ["yield" "bayar"] @keyword.control)
+
+(await_expression ["await" "jira"] @keyword.control.async)
+(spawn_expression ["spawn" "dan_aiki"] @keyword.control.async)
+
+; --- Storage & Modifiers ---
+(modifier) @keyword.storage
+(variable_declaration ["mut" "let" "const" "static"] @keyword.storage)
+(parameter "mut" @keyword.storage)
+
+; --- Identifiers ---
 (identifier) @variable
 (parameter name: (identifier) @variable.parameter)
 (variable_declaration name: (identifier) @variable)
-(variable_declaration ["const" "static"] name: (identifier) @constant)
+
+; Constants: captured when used with const/static or for all-caps identifiers
+(variable_declaration (modifier) @keyword.storage name: (identifier) @constant (#match? @keyword.storage "const|static"))
+((identifier) @constant (#match? @constant "^[A-Z_][A-Z0-9_]*$"))
 
 (function_definition name: (identifier) @function)
 (class_definition name: (identifier) @type)
@@ -17,6 +67,8 @@
 (interface_definition name: (identifier) @type)
 (enum_definition name: (identifier) @type)
 (extend_definition name: (identifier) @type)
+
+(generic_type name: _ @type)
 
 (member_expression member: (identifier) @variable.other.member)
 (call_expression function: (identifier) @function.call)
@@ -35,18 +87,18 @@
 (none) @constant.builtin
 (escape_sequence) @constant.character.escape
 
-; Punctuation and Operators
+; --- Punctuation and Operators ---
 (binary_expression operator: _ @operator)
+(binary_expression ["in" "is"] @keyword.control)
+(as_expression "as" @keyword.control)
 (unary_expression operator: _ @operator)
 (assignment_expression operator: _ @operator)
-(operators) @operator ; fallback
 
-(punctuation) @punctuation
 (colon) @punctuation.delimiter
 ["(" ")" "[" "]" "{" "}"] @punctuation.bracket
 "," @punctuation.delimiter
 "." @punctuation.delimiter
-"->" @punctuation.delimiter
+["->" ":"] @punctuation.delimiter
 
-; Comments
+; --- Comments ---
 (line_comment) @comment

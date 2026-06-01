@@ -8,6 +8,10 @@
       "required": false,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -20,7 +24,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -32,11 +60,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -51,13 +91,25 @@
     }
   },
   {
-    "type": "assignment_expression",
+    "type": "as_expression",
     "named": true,
     "fields": {
       "left": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -71,7 +123,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -83,11 +159,141 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "assignment_expression",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
+            "type": "await_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "lambda_expression",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -163,9 +369,21 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -179,7 +397,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -191,11 +433,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -219,6 +473,10 @@
       "required": true,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -231,7 +489,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -243,11 +525,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -266,9 +560,21 @@
     "named": true,
     "fields": {
       "left": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -282,7 +588,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -294,11 +624,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -414,9 +756,21 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -430,7 +784,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -442,11 +820,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -474,11 +864,23 @@
           "named": true
         },
         {
+          "type": "case_clause",
+          "named": true
+        },
+        {
           "type": "class_definition",
           "named": true
         },
         {
+          "type": "colon",
+          "named": true
+        },
+        {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "decorator",
           "named": true
         },
         {
@@ -491,6 +893,10 @@
         },
         {
           "type": "extend_definition",
+          "named": true
+        },
+        {
+          "type": "extern_statement",
           "named": true
         },
         {
@@ -535,6 +941,10 @@
         },
         {
           "type": "try_statement",
+          "named": true
+        },
+        {
+          "type": "unsafe_statement",
           "named": true
         },
         {
@@ -611,9 +1021,21 @@
         ]
       },
       "function": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -627,7 +1049,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -639,11 +1085,133 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "subscript_expression",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "case_clause",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      },
+      "pattern": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
+          {
+            "type": "assignment_expression",
+            "named": true
+          },
+          {
+            "type": "await_expression",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
+            "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "lambda_expression",
+            "named": true
+          },
+          {
+            "type": "member_expression",
+            "named": true
+          },
+          {
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
+            "named": true
+          },
+          {
+            "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -664,7 +1232,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -678,6 +1246,16 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type_parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
             "named": true
           }
         ]
@@ -695,9 +1273,29 @@
     }
   },
   {
+    "type": "colon",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "continue_statement",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "decorator",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "docstring",
@@ -719,9 +1317,21 @@
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -735,7 +1345,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -747,11 +1381,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -793,15 +1439,34 @@
     }
   },
   {
+    "type": "enum_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "colon",
+          "named": true
+        },
+        {
+          "type": "enum_variant",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "enum_definition",
     "named": true,
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "block",
+            "type": "enum_block",
             "named": true
           }
         ]
@@ -812,6 +1477,52 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type_parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "modifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_variant",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "parameters",
             "named": true
           }
         ]
@@ -838,6 +1549,10 @@
       "required": false,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -850,7 +1565,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -862,11 +1601,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -889,6 +1640,10 @@
       "required": true,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -901,7 +1656,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -913,11 +1692,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -937,7 +1728,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -954,7 +1745,43 @@
             "named": true
           }
         ]
+      },
+      "type_parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
       }
+    }
+  },
+  {
+    "type": "extern_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1017,9 +1844,21 @@
         ]
       },
       "right": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1033,7 +1872,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1045,11 +1908,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -1073,6 +1948,10 @@
       "required": true,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -1085,7 +1964,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -1097,11 +2000,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -1121,7 +2036,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -1166,6 +2081,16 @@
             "named": true
           }
         ]
+      },
+      "type_parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
       }
     },
     "children": {
@@ -1187,6 +2112,10 @@
         "multiple": false,
         "required": true,
         "types": [
+          {
+            "type": "builtin_types",
+            "named": true
+          },
           {
             "type": "identifier",
             "named": true
@@ -1214,13 +2143,30 @@
     }
   },
   {
+    "type": "identifier_dotted",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "if_statement",
     "named": true,
     "fields": {
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1234,7 +2180,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1246,11 +2216,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -1298,17 +2280,27 @@
       "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "import_name",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "import_statement",
+    "type": "import_name",
     "named": true,
     "fields": {
-      "module": {
+      "alias": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
         "multiple": false,
         "required": true,
         "types": [
@@ -1318,17 +2310,33 @@
           }
         ]
       }
+    }
+  },
+  {
+    "type": "import_statement",
+    "named": true,
+    "fields": {
+      "module": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier_dotted",
+            "named": true
+          }
+        ]
+      }
     },
     "children": {
-      "multiple": false,
-      "required": false,
+      "multiple": true,
+      "required": true,
       "types": [
         {
-          "type": "identifier",
+          "type": "import_list",
           "named": true
         },
         {
-          "type": "import_list",
+          "type": "import_name",
           "named": true
         }
       ]
@@ -1340,7 +2348,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -1357,6 +2365,16 @@
             "named": true
           }
         ]
+      },
+      "type_parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
+            "named": true
+          }
+        ]
       }
     }
   },
@@ -1365,9 +2383,21 @@
     "named": true,
     "fields": {
       "body": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1381,7 +2411,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1393,11 +2447,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -1420,6 +2486,16 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "colon",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -1428,7 +2504,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -1437,9 +2513,21 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1453,7 +2541,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1465,11 +2577,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -1499,9 +2623,21 @@
         ]
       },
       "object": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1515,7 +2651,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1527,11 +2687,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -1576,9 +2748,21 @@
     "named": true,
     "fields": {
       "default": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -1592,7 +2776,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -1604,11 +2812,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -1672,13 +2892,17 @@
     "fields": {}
   },
   {
-    "type": "primary_expression",
+    "type": "raise_statement",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "as_expression",
+          "named": true
+        },
         {
           "type": "assignment_expression",
           "named": true
@@ -1712,6 +2936,10 @@
           "named": true
         },
         {
+          "type": "generic_type",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -1732,10 +2960,6 @@
           "named": true
         },
         {
-          "type": "primary_expression",
-          "named": true
-        },
-        {
           "type": "self",
           "named": true
         },
@@ -1745,57 +2969,6 @@
         },
         {
           "type": "string",
-          "named": true
-        },
-        {
-          "type": "subscript_expression",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "raise_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "assignment_expression",
-          "named": true
-        },
-        {
-          "type": "await_expression",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "call_expression",
-          "named": true
-        },
-        {
-          "type": "lambda_expression",
-          "named": true
-        },
-        {
-          "type": "member_expression",
-          "named": true
-        },
-        {
-          "type": "primary_expression",
-          "named": true
-        },
-        {
-          "type": "spawn_expression",
           "named": true
         },
         {
@@ -1823,6 +2996,10 @@
       "required": false,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -1835,7 +3012,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -1847,11 +3048,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -1879,11 +3092,19 @@
           "named": true
         },
         {
+          "type": "case_clause",
+          "named": true
+        },
+        {
           "type": "class_definition",
           "named": true
         },
         {
           "type": "continue_statement",
+          "named": true
+        },
+        {
+          "type": "decorator",
           "named": true
         },
         {
@@ -1896,6 +3117,10 @@
         },
         {
           "type": "extend_definition",
+          "named": true
+        },
+        {
+          "type": "extern_statement",
           "named": true
         },
         {
@@ -1943,6 +3168,10 @@
           "named": true
         },
         {
+          "type": "unsafe_statement",
+          "named": true
+        },
+        {
           "type": "variable_declaration",
           "named": true
         },
@@ -1970,6 +3199,10 @@
       "required": true,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -1982,7 +3215,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -1994,11 +3251,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -2049,7 +3318,7 @@
     "fields": {
       "body": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
             "type": "block",
@@ -2063,6 +3332,16 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "type_parameters": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "type_parameters",
             "named": true
           }
         ]
@@ -2084,9 +3363,21 @@
     "named": true,
     "fields": {
       "object": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -2100,7 +3391,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -2112,11 +3427,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -2130,9 +3457,21 @@
         ]
       },
       "subscript": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -2146,7 +3485,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -2158,11 +3521,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -2208,13 +3583,40 @@
     }
   },
   {
+    "type": "type_parameters",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {
       "argument": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -2228,7 +3630,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -2240,11 +3666,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -2286,6 +3724,22 @@
     }
   },
   {
+    "type": "unsafe_statement",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "block",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "variable_declaration",
     "named": true,
     "fields": {
@@ -2318,9 +3772,21 @@
         ]
       },
       "value": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -2334,7 +3800,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -2346,11 +3836,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -2390,9 +3892,21 @@
         ]
       },
       "condition": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "as_expression",
+            "named": true
+          },
           {
             "type": "assignment_expression",
             "named": true
@@ -2406,7 +3920,31 @@
             "named": true
           },
           {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "builtin_exceptions",
+            "named": true
+          },
+          {
+            "type": "builtin_functions",
+            "named": true
+          },
+          {
+            "type": "builtin_types",
+            "named": true
+          },
+          {
             "type": "call_expression",
+            "named": true
+          },
+          {
+            "type": "generic_type",
+            "named": true
+          },
+          {
+            "type": "identifier",
             "named": true
           },
           {
@@ -2418,11 +3956,23 @@
             "named": true
           },
           {
-            "type": "primary_expression",
+            "type": "none",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "self",
             "named": true
           },
           {
             "type": "spawn_expression",
+            "named": true
+          },
+          {
+            "type": "string",
             "named": true
           },
           {
@@ -2457,6 +4007,10 @@
       "required": true,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -2469,7 +4023,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -2481,11 +4059,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -2508,6 +4098,10 @@
       "required": false,
       "types": [
         {
+          "type": "as_expression",
+          "named": true
+        },
+        {
           "type": "assignment_expression",
           "named": true
         },
@@ -2520,7 +4114,31 @@
           "named": true
         },
         {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_exceptions",
+          "named": true
+        },
+        {
+          "type": "builtin_functions",
+          "named": true
+        },
+        {
+          "type": "builtin_types",
+          "named": true
+        },
+        {
           "type": "call_expression",
+          "named": true
+        },
+        {
+          "type": "generic_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         },
         {
@@ -2532,11 +4150,23 @@
           "named": true
         },
         {
-          "type": "primary_expression",
+          "type": "none",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
           "type": "spawn_expression",
+          "named": true
+        },
+        {
+          "type": "string",
           "named": true
         },
         {
@@ -2700,6 +4330,10 @@
   },
   {
     "type": ">>=",
+    "named": false
+  },
+  {
+    "type": "@",
     "named": false
   },
   {
@@ -2903,6 +4537,10 @@
     "named": false
   },
   {
+    "type": "as",
+    "named": false
+  },
+  {
     "type": "assert",
     "named": false
   },
@@ -2952,6 +4590,10 @@
   },
   {
     "type": "callable",
+    "named": false
+  },
+  {
+    "type": "case",
     "named": false
   },
   {
@@ -3099,6 +4741,10 @@
     "named": false
   },
   {
+    "type": "hali",
+    "named": false
+  },
+  {
     "type": "hasattr",
     "named": false
   },
@@ -3140,10 +4786,6 @@
   },
   {
     "type": "identifier",
-    "named": true
-  },
-  {
-    "type": "identifier_dotted",
     "named": true
   },
   {
@@ -3341,6 +4983,10 @@
   },
   {
     "type": "setattr",
+    "named": false
+  },
+  {
+    "type": "sizeof",
     "named": false
   },
   {
