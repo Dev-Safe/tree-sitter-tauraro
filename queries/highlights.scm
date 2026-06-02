@@ -49,7 +49,6 @@
 
 ; --- Storage & Modifiers ---
 (modifier) @keyword.storage
-(variable_declaration ["mut" "let" "const" "static"] @keyword.storage)
 (parameter "mut" @keyword.storage)
 
 ; --- Identifiers ---
